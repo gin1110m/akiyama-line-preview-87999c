@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>秋山洋晃 公式LINE ｜ 登録者が体験する流れ</title>
+<meta name="description" content="秋山洋晃の公式LINEに友だち追加した人が実際に受け取るメッセージの全体像（登録者目線の再現イメージ）">
+<meta name="robots" content="noindex">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&family=Barlow+Condensed:wght@500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --navy:#16273f; --navy2:#101b2c; --accent:#2f5d96; --accent-soft:#7fa6d6;
+    --ink:#16191e; --text:#39404a; --mute:#6b7280; --line:rgba(22,39,63,.12);
+    --paper:#eef1f5; --card:#ffffff;
+    --line-green:#06c755; --line-bg1:#cdd9e6; --line-bg2:#d9e2ec;
+    --sans:"Noto Sans JP",sans-serif; --num:"Barlow Condensed",sans-serif;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{
+    font-family:var(--sans); color:var(--ink); font-weight:500; line-height:1.7;
+    -webkit-font-smoothing:antialiased; word-break:keep-all; overflow-wrap:anywhere;
+    background:var(--paper);
+    background-image:
+      radial-gradient(1100px 600px at 12% -8%, rgba(47,93,150,.16), transparent 60%),
+      radial-gradient(900px 520px at 100% 0%, rgba(22,39,63,.14), transparent 55%);
+    background-attachment:fixed;
+  }
+  /* 微細ノイズで平板さを消す */
+  body::before{
+    content:""; position:fixed; inset:0; pointer-events:none; z-index:0; opacity:.035;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  }
+  .wrap{position:relative; z-index:1; max-width:1080px; margin:0 auto; padding:0 22px}
+  b,strong{font-weight:700}
+
+  /* ===== Hero ===== */
+  .hero{
+    background:linear-gradient(165deg,var(--navy),var(--navy2));
+    color:#fff; padding:54px 0 60px; position:relative; overflow:hidden;
+  }
+  .hero::after{ /* 上部アクセント帯（左縦ボーダーは使わない） */
+    content:""; position:absolute; left:0; top:0; width:100%; height:5px;
+    background:linear-gradient(90deg,var(--accent),var(--line-green));
+  }
+  .hero .eyebrow{font-family:var(--num); font-weight:600; letter-spacing:.22em; font-size:15px; color:var(--accent-soft); text-transform:uppercase}
+  .hero h1{font-size:clamp(28px,5.4vw,46px); font-weight:900; letter-spacing:-.02em; line-height:1.2; margin:12px 0 16px}
+  .hero p.lead{font-size:clamp(15px,2.4vw,18px); color:rgba(255,255,255,.9); max-width:680px; font-weight:500}
+  .hero .note{
+    display:inline-block; margin-top:22px; font-size:13.5px; color:#ffe9b0;
+    background:rgba(245,200,80,.12); border:1px solid rgba(245,200,80,.35);
+    padding:9px 15px; border-radius:999px;
+  }
+
+  /* ===== Overview map ===== */
+  .overview{padding:46px 0 8px}
+  .sec-label{font-family:var(--num); font-weight:700; letter-spacing:.16em; font-size:14px; color:var(--accent); text-transform:uppercase}
+  .sec-title{font-size:clamp(21px,3.4vw,28px); font-weight:900; letter-spacing:-.01em; color:var(--ink); margin:6px 0 4px}
+  .sec-sub{font-size:14.5px; color:var(--mute); margin-bottom:24px}
+  .flow{display:grid; grid-template-columns:repeat(auto-fit,minmax(150px,1fr)); gap:12px}
+  .flow .step{
+    background:var(--card); border:1px solid var(--line); border-radius:14px;
+    padding:16px 16px 18px; box-shadow:0 1px 3px rgba(22,39,63,.05);
+    position:relative; min-height:118px; display:flex; flex-direction:column;
+  }
+  .flow .step .top{height:30px; display:flex; align-items:center; gap:8px}
+  .flow .step .n{font-family:var(--num); font-weight:700; font-size:20px; color:#fff;
+    background:var(--accent); width:30px; height:30px; border-radius:8px; display:grid; place-items:center; line-height:1}
+  .flow .step h4{font-size:15px; font-weight:800; color:var(--ink); margin:12px 0 5px; line-height:1.35}
+  .flow .step p{font-size:12.5px; color:var(--mute); line-height:1.55}
+
+  /* ===== Phone stage ===== */
+  .stage{padding:40px 0 8px; display:flex; flex-direction:column; align-items:center}
+  .phone{
+    width:380px; max-width:94vw; background:#0c0c10; border-radius:46px; padding:13px;
+    box-shadow:0 40px 90px -30px rgba(12,16,28,.65), 0 0 0 1px rgba(255,255,255,.04);
+  }
+  .screen{background:var(--line-bg2); border-radius:34px; overflow:hidden; position:relative}
+  .statusbar{height:30px; display:flex; align-items:center; justify-content:space-between;
+    padding:0 22px; font-size:12px; font-weight:700; color:#fff; background:var(--navy);
+    font-family:var(--num); letter-spacing:.04em}
+  .statusbar .ic{display:flex; gap:5px; align-items:center; font-size:11px}
+  /* LINE chat header */
+  .lhead{display:flex; align-items:center; gap:10px; padding:11px 14px; background:var(--navy); color:#fff}
+  .lhead .back{font-size:20px; opacity:.85; line-height:1}
+  .lhead .av{width:34px; height:34px; border-radius:50%; object-fit:cover; border:1.5px solid rgba(255,255,255,.5)}
+  .lhead .nm{font-size:15px; font-weight:700; flex:1; line-height:1.15}
+  .lhead .nm small{display:block; font-size:10.5px; font-weight:500; color:var(--accent-soft); letter-spacing:.02em}
+  .lhead .menu{font-size:18px; letter-spacing:2px; opacity:.85}
+
+  .chat{
+    padding:16px 13px 8px; min-height:300px;
+    background:
+      radial-gradient(circle at 18% 12%, rgba(255,255,255,.5), transparent 40%),
+      linear-gradient(180deg,var(--line-bg1),var(--line-bg2));
+  }
+  .divider{display:flex; justify-content:center; margin:16px 0 14px}
+  .divider span{background:rgba(22,39,63,.34); color:#fff; font-size:11.5px; font-weight:700;
+    padding:4px 13px; border-radius:999px; letter-spacing:.02em}
+  .note-line{text-align:center; font-size:11.5px; color:#56657a; font-weight:600; margin:6px 18px 14px; line-height:1.5}
+
+  .row{display:flex; margin:3px 0; align-items:flex-end; gap:7px}
+  .row.in{justify-content:flex-start}
+  .row.out{justify-content:flex-end}
+  .av-s{width:30px; height:30px; border-radius:50%; object-fit:cover; flex:none; align-self:flex-start}
+  .av-sp{width:30px; flex:none}           /* avatar spacer when grouped */
+  .grp{max-width:78%; display:flex; flex-direction:column; gap:3px}
+  .who{font-size:11px; color:#42526b; font-weight:700; margin:2px 0 1px 2px}
+  .bub{
+    position:relative; padding:10px 13px; font-size:13.5px; line-height:1.62; white-space:pre-wrap;
+    border-radius:4px 16px 16px 16px; box-shadow:0 1px 1.5px rgba(22,39,63,.10);
+  }
+  .in .bub{background:#fff; color:#1c2330}
+  .out .bub{background:var(--line-green); color:#fff; border-radius:16px 4px 16px 16px}
+  .out .grp{align-items:flex-end}
+  .bub b{font-weight:800}
+  .time{font-size:10px; color:#5b6b80; align-self:flex-end; margin-bottom:2px; flex:none; font-weight:600}
+  .out .time{order:-1}
+
+  /* quick reply pills (LINEのタップ回答) */
+  .qr{display:flex; flex-wrap:wrap; gap:6px; margin:7px 0 4px 37px}
+  .qr .pill{
+    background:#fff; color:var(--line-green); border:1.5px solid var(--line-green);
+    font-size:12px; font-weight:700; padding:6px 12px; border-radius:999px; line-height:1.3;
+  }
+  .qr.single .pill{background:var(--line-green); color:#fff}
+
+  /* rich menu pinned bottom */
+  .richwrap{background:#fff; border-top:1px solid var(--line)}
+  .richbar{display:flex; align-items:center; justify-content:center; gap:7px; padding:7px;
+    font-size:11px; font-weight:700; color:var(--mute); background:#f4f6f9}
+  .richwrap img{width:100%; display:block}
+  .inputbar{display:flex; align-items:center; gap:9px; padding:9px 13px; background:#fff; border-top:1px solid var(--line)}
+  .inputbar .box{flex:1; height:30px; background:#eef1f5; border-radius:999px}
+  .inputbar .snd{width:30px; height:30px; border-radius:50%; background:var(--line-green); flex:none;
+    display:grid; place-items:center; color:#fff; font-size:14px}
+
+  .cap{font-size:13px; color:var(--mute); margin-top:20px; text-align:center; max-width:380px; line-height:1.6}
+
+  /* ===== Branches ===== */
+  .branches{padding:54px 0 10px}
+  .bgrid{display:grid; grid-template-columns:repeat(auto-fit,minmax(240px,1fr)); gap:16px; margin-top:24px}
+  .bcard{background:var(--card); border:1px solid var(--line); border-radius:16px; overflow:hidden;
+    box-shadow:0 2px 6px rgba(22,39,63,.05); display:flex; flex-direction:column}
+  .bcard .hd{background:var(--navy); color:#fff; padding:12px 16px; height:62px; display:flex; flex-direction:column; justify-content:center}
+  .bcard .hd .tag{font-family:var(--num); font-size:11px; font-weight:700; letter-spacing:.14em; color:var(--accent-soft); text-transform:uppercase}
+  .bcard .hd h4{font-size:15px; font-weight:800; line-height:1.3}
+  .bcard .bd{padding:14px 16px 16px}
+  .bcard .trig{font-size:12px; font-weight:700; color:var(--accent); margin-bottom:8px}
+  .bcard .msg{font-size:13px; color:var(--text); white-space:pre-wrap; line-height:1.6;
+    background:#f5f7fa; border:1px solid var(--line); border-radius:10px; padding:11px 13px}
+
+  /* ===== footer ===== */
+  footer{margin-top:60px; padding:30px 0 50px; border-top:1px solid var(--line); text-align:center}
+  footer p{font-size:12.5px; color:var(--mute); line-height:1.7}
+  footer .brand{font-family:var(--num); font-weight:700; letter-spacing:.16em; color:var(--navy); font-size:14px; text-transform:uppercase; margin-bottom:6px}
+
+  /* reveal */
+  .rv{opacity:0; transform:translateY(18px); transition:opacity .6s cubic-bezier(.16,1,.3,1), transform .6s cubic-bezier(.16,1,.3,1)}
+  .rv.on{opacity:1; transform:none}
+  @media (prefers-reduced-motion:reduce){ .rv{opacity:1; transform:none; transition:none} html{scroll-behavior:auto} }
+  @media (max-width:560px){ .qr{margin-left:0} }
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="wrap">
+    <div class="eyebrow">Akiyama Hiroaki — Official LINE</div>
+    <h1>登録者が体験する、<br>あなたの公式LINEのすべて</h1>
+    <p class="lead">秋山さんの公式LINEに「友だち追加」した経営者が、実際にどんな順番で・どんなメッセージを受け取るのか。登録した人の目線で、上から下に通して見られるようにまとめました。</p>
+    <span class="note">※ 文面は現在ドラフトです（本番公開前に最終調整します）</span>
+  </div>
+</header>
+
+<section class="overview">
+  <div class="wrap">
+    <div class="sec-label rv">The Journey</div>
+    <h2 class="sec-title rv">登録者がたどる5ステップ</h2>
+    <p class="sec-sub rv">まず全体像。詳しい中身はこの下のスマホ画面で1つずつ見られます。</p>
+    <div class="flow">
+      <div class="step rv"><div class="top"><span class="n">1</span></div><h4>友だち追加</h4><p>QRやリンクから登録。すぐにあいさつが届く。</p></div>
+      <div class="step rv"><div class="top"><span class="n">2</span></div><h4>その場で無料診断</h4><p>ボタンをタップするだけの全11問。タイピング不要・約30秒。</p></div>
+      <div class="step rv"><div class="top"><span class="n">3</span></div><h4>診断結果が出る</h4><p>「AIが一番利益を生む場所」と年間インパクトを提示。</p></div>
+      <div class="step rv"><div class="top"><span class="n">4</span></div><h4>6日間のステップ配信</h4><p>営業→事例→誤解→相談案内→リマインドを自動でお届け。</p></div>
+      <div class="step rv"><div class="top"><span class="n">5</span></div><h4>無料相談へ</h4><p>ピンと来たら相談。秋山さんが日程を調整。</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="stage">
+  <div class="sec-label rv" style="text-align:center;width:100%">In the Chat</div>
+  <h2 class="sec-title rv" style="text-align:center;width:100%;margin-bottom:26px">実際のLINE画面（再現）</h2>
+  <div class="phone rv">
+    <div class="screen">
+      <div class="statusbar"><span>9:24</span><span class="ic">●●● 📶 100%</span></div>
+      <div class="lhead">
+        <span class="back">‹</span>
+        <img class="av" src="assets/akiyama.jpg" alt="秋山洋晃">
+        <span class="nm">秋山洋晃<small>公式アカウント</small></span>
+        <span class="menu">⋮</span>
+      </div>
+      <div class="chat" id="chat"><!-- JSで描画 --></div>
+      <div class="richwrap">
+        <div class="richbar">▼ トーク画面の下に常に表示されるメニュー</div>
+        <img src="assets/richmenu.png" alt="リッチメニュー（AI経営診断／無料相談／実績／X）">
+      </div>
+      <div class="inputbar"><div class="box"></div><div class="snd">➤</div></div>
+    </div>
+  </div>
+  <p class="cap">↑ あいさつから6日後のリマインドまで、登録者が受け取る全メッセージを時系列で再現しています。</p>
+</section>
+
+<section class="branches">
+  <div class="wrap">
+    <div class="sec-label rv">Other Responses</div>
+    <h2 class="sec-title rv">そのほかの自動応答</h2>
+    <p class="sec-sub rv">登録者が自由にメッセージを送ったときや、別の入口から入ったときの動きです。</p>
+    <div class="bgrid">
+      <div class="bcard rv">
+        <div class="hd"><span class="tag">Keyword</span><h4>「相談」と送ると</h4></div>
+        <div class="bd">
+          <div class="trig">トリガー：相談／予約／話したい／申込</div>
+          <div class="msg">無料相談(30分)はこちらから予約できます。
+（LINEで秋山さんが日程調整）
+
+売り込みはしません。いまの課題を持ってきてください。</div>
+        </div>
+      </div>
+      <div class="bcard rv">
+        <div class="hd"><span class="tag">Keyword</span><h4>「ROI」「特典」と送ると</h4></div>
+        <div class="bd">
+          <div class="trig">トリガー：ROI／試算／シート／特典</div>
+          <div class="msg">AI導入ROI試算シートはこちらです。
+（gin1110m.github.io …/roi.html）
+
+自社の数字を入れてみてください。</div>
+        </div>
+      </div>
+      <div class="bcard rv">
+        <div class="hd"><span class="tag">AI Reply</span><h4>それ以外の質問は</h4></div>
+        <div class="bd">
+          <div class="trig">トリガー：上記以外のメッセージ</div>
+          <div class="msg">秋山さんのトーンを学習したAIが自動で返信。
+答えきれない内容は、最後に必ず「無料相談(30分)」へ案内します。</div>
+        </div>
+      </div>
+      <div class="bcard rv">
+        <div class="hd"><span class="tag">Web</span><h4>X・検索から来た人は</h4></div>
+        <div class="bd">
+          <div class="trig">入口：Web版 AI経営診断（shindan.html）</div>
+          <div class="msg">LINE未登録でも、Webページ上で同じ診断ができます。
+結果を見た流れで、そのまま公式LINEの友だち追加へ。</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <p class="brand">Akiyama Hiroaki — Official LINE Preview</p>
+    <p>これは登録者目線の再現イメージです。実際の配信タイミングは登録日からの経過日数で自動制御されます。<br>文面は現在ドラフト（秋山さん確認前提）。確定後にこのページも更新します。</p>
+  </div>
+</footer>
+
+<script>
+/* == 実際のbot(steps.py / quizflow.py / diagnosis.py)から抽出したメッセージ == */
+const G = "登録ありがとうございます。秋山洋晃の公式LINEです。\n\nここでは「AIで経営の数字がどう変わるか」だけを話します。\nツールの使い方の話はしません。あくまで、売上と利益の話です。";
+
+const QUESTIONS = [
+  ["御社にいちばん近い事業はどれですか？", ["D2C（自社ブランド/定期通販）","EC・通販（モール/自社EC）","美容・クリニック（自由診療）","教育・スクール","SaaS・IT","人材・エージェント","その他"]],
+  ["直近の年商は、ざっくりどのあたりですか？", ["〜3億","3〜10億","10〜50億","50億〜"]],
+  ["社員数はどのくらいですか？", ["〜10名","10〜50名","50〜150名","150名〜"]],
+  ["あなたのお立場は？", ["経営者・役員","事業責任者","部門長","担当者"]],
+  ["営業チームは、提案資料・議事録・リスト作成などに追われず、商談そのものに時間を使えていますか？", ["商談は業務の半分以下","付随作業で残業が常態化","商談時間は確保できている","営業部門はない"]],
+  ["集客は、当てる施策とクリエイティブを、十分な量とスピードで回せていますか？", ["制作が全く追いつかない","検証の量と速度が足りない","獲得効率は安定している","マーケ機能はない"]],
+  ["問い合わせ対応は、件数が増えても今の人数で回りますか？", ["同じ質問対応に追われる","繁忙期は遅れてクレーム","今の体制でさばけている","CS部門はない"]],
+  ["採用は、母集団形成から選考・日程調整までスムーズに回せていますか？", ["手作業で単価だけ上がる","送信・日程調整に時間","今のやり方で採れている","いま採用はしていない"]],
+  ["月次の集計・レポート・議事録は、どれくらい自動化できていますか？", ["毎月まとまった工数が消える","半分手作業でミスが出る","ほぼ自動化できている","専任の担当はいない"]],
+  ["商談の前後に資料・連絡などの作業が発生する人は、何人いますか？", ["1〜3人（少数精鋭）","4〜10人（チーム化してきた）","11〜30人（管理が増える）","30人〜（営業組織がある）"]],
+  ["その一人あたりの平均年収は、ざっくりどのくらいですか？", ["〜400万円","400〜600万円","600〜800万円","800万円〜"]],
+];
+
+/* 診断結果（例：上の回答の場合。実ロジックで算出した代表値） */
+const RESULT = "診断結果です。\n\n御社でAIが一番利益を生むのは「営業」。\n年間 約1,176万円のポテンシャルです（概算）。\n\n▼ 5機能の利益インパクト（概算）\n・営業：約1,176万円\n・バックオフィス：約525万円\n・CS：約281万円\n・マーケ：約150万円\n・採用：約10万円\n\n※公開情報・一般値ベースの概算です。御社の実数での精密試算は無料相談で。";
+const BOOK = "ありがとうございます。秋山が日程を調整します。\nこのままLINEで希望の曜日・時間帯を送っていただくか、こちらからどうぞ。";
+
+const DAYS = [
+  ["登録から1日後","AIで一番お金が動くのは、実は「営業」でした。\n\n前職では、月商1,000万の会社を12ヶ月で月商1億にしました。\n本質は、営業マンを“商談だけ”に集中させたこと。\n\n議事録・提案資料・メール・リスト作成。\nこの「商談以外」をAIに寄せると、生産性は数倍になります。"],
+  ["登録から2日後","具体的な数字をひとつ。\n\nある美容クリニックは、CPAが15万円→5万円(300%改善)。\n数百万の赤字が、3ヶ月で黒字になりました。\n\n派手なAIツールを入れたからではありません。\n「どの数字を、どの順で動かすか」を決めただけ。AIはその実行を速くする手段です。"],
+  ["登録から3日後","AIでよくある失敗は、「ツールを覚えること」が目的になることです。\n\nプロンプトを勉強しても、それだけでは売上は増えません。\n大事なのは“経営のどのボトルネックに当てるか”。\n\n順番が逆だと、時間だけ溶けていきます。"],
+  ["登録から4日後","もし自社で試したいなら、無料相談(30分)をやっています。\n\n・あなたの事業で、AIが一番効く一手はどこか\n・それで数字がどう動くか(ざっくり試算)\nこの2つを、その場で持ち帰れます。売り込みはしません。\n\n▼ 予約はこちら"],
+  ["登録から6日後","先日ご案内した無料相談、枠が埋まってきています。\n\n「AIで何ができるか」ではなく「自社の利益がどう変わるか」を一緒に見ます。\nピンと来たタイミングで大丈夫です。\n\n▼ 予約はこちら"],
+];
+
+const AV = "assets/akiyama.jpg";
+const chat = [];
+chat.push({t:"divider", x:"友だち追加した直後"});
+chat.push({t:"in", head:true, x:G, time:"9:24"});
+QUESTIONS.forEach((q,i)=> chat.push({t:"in", x:q[0], qr:q[1], time:"9:24"}));
+chat.push({t:"note", x:"↑ ボタンをタップするだけの全11問。タイピング不要で約30秒。回答すると次の質問が出ます。"});
+chat.push({t:"in", head:true, x:RESULT, qr:["無料相談について"], single:true, time:"9:25"});
+chat.push({t:"out", x:"無料相談について", time:"9:25"});
+chat.push({t:"in", head:true, x:BOOK, time:"9:25"});
+DAYS.forEach(d=>{ chat.push({t:"divider", x:d[0]}); chat.push({t:"in", head:true, x:d[1], time:"10:00"}); });
+
+const esc = s => s.replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;");
+const el = document.getElementById("chat");
+let html = "";
+for(const m of chat){
+  if(m.t==="divider"){ html += `<div class="divider"><span>${esc(m.x)}</span></div>`; continue; }
+  if(m.t==="note"){ html += `<div class="note-line">${esc(m.x)}</div>`; continue; }
+  if(m.t==="in"){
+    const av = m.head ? `<img class="av-s" src="${AV}" alt="秋山洋晃">` : `<div class="av-sp"></div>`;
+    const who = m.head ? `<div class="who">秋山洋晃</div>` : "";
+    html += `<div class="row in">${av}<div class="grp">${who}<div style="display:flex;align-items:flex-end;gap:7px"><div class="bub">${esc(m.x)}</div><span class="time">${m.time||""}</span></div></div></div>`;
+    if(m.qr){
+      const cls = m.single ? "qr single" : "qr";
+      html += `<div class="${cls}">` + m.qr.map(o=>`<span class="pill">${esc(o)}</span>`).join("") + `</div>`;
+    }
+  } else { // out
+    html += `<div class="row out"><div class="grp"><div style="display:flex;align-items:flex-end;gap:7px"><span class="time">${m.time||""}</span><div class="bub">${esc(m.x)}</div></div></div></div>`;
+  }
+}
+el.innerHTML = html;
+
+/* scroll reveal */
+const io = new IntersectionObserver((es)=>{ es.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add("on"); io.unobserve(e.target);} }); }, {threshold:.12});
+document.querySelectorAll(".rv").forEach((n,i)=>{ n.style.transitionDelay = (Math.min(i,6)*60)+"ms"; io.observe(n); });
+</script>
+</body>
+</html>
