@@ -334,5 +334,32 @@ el.innerHTML = html;
 const io = new IntersectionObserver((es)=>{ es.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add("on"); io.unobserve(e.target);} }); }, {threshold:.12});
 document.querySelectorAll(".rv").forEach((n,i)=>{ n.style.transitionDelay = (Math.min(i,6)*60)+"ms"; io.observe(n); });
 </script>
+
+<!-- ===== BudouX：日本語を文節で改行（改行ストレス解消・永続ルール） ===== -->
+<style>:where(html){word-break:keep-all;overflow-wrap:anywhere;line-break:strict;}</style>
+<script type="module">
+  import { loadDefaultJapaneseParser } from 'https://cdn.jsdelivr.net/npm/budoux@0.8.4/+esm';
+  const parser = loadDefaultJapaneseParser();
+  const ZWSP = '​';
+  const SKIP = new Set(['SCRIPT','STYLE','TEXTAREA','CODE','PRE','NOSCRIPT','OPTION','INPUT']);
+  const hasJa = s => /[぀-ヿ㐀-鿿ｦ-ﾟ]/.test(s);
+  const apply = () => {
+    const w = document.createTreeWalker(document.body, NodeFilter.SHOW_TEXT, {
+      acceptNode(n){
+        if (!n.nodeValue || !n.nodeValue.trim()) return NodeFilter.FILTER_REJECT;
+        if (n.parentElement && SKIP.has(n.parentElement.tagName)) return NodeFilter.FILTER_REJECT;
+        if (n.nodeValue.includes(ZWSP)) return NodeFilter.FILTER_REJECT;
+        if (!hasJa(n.nodeValue)) return NodeFilter.FILTER_REJECT;
+        return NodeFilter.FILTER_ACCEPT;
+      }
+    });
+    const nodes = []; let n; while ((n = w.nextNode())) nodes.push(n);
+    for (const t of nodes){ const seg = parser.parse(t.nodeValue); if (seg.length > 1) t.nodeValue = seg.join(ZWSP); }
+  };
+  const run = () => { try { apply(); } catch (e) {} };
+  if (document.readyState === 'loading') addEventListener('DOMContentLoaded', run); else run();
+  let tm; const mo = new MutationObserver(() => { clearTimeout(tm); tm = setTimeout(run, 80); });
+  addEventListener('DOMContentLoaded', () => mo.observe(document.body, { childList:true, subtree:true }));
+</script>
 </body>
 </html>
