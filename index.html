@@ -31,7 +31,6 @@
       radial-gradient(900px 520px at 100% 0%, rgba(22,39,63,.14), transparent 55%);
     background-attachment:fixed;
   }
-  /* 微細ノイズで平板さを消す */
   body::before{
     content:""; position:fixed; inset:0; pointer-events:none; z-index:0; opacity:.035;
     background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
@@ -44,7 +43,7 @@
     background:linear-gradient(165deg,var(--navy),var(--navy2));
     color:#fff; padding:54px 0 60px; position:relative; overflow:hidden;
   }
-  .hero::after{ /* 上部アクセント帯（左縦ボーダーは使わない） */
+  .hero::after{
     content:""; position:absolute; left:0; top:0; width:100%; height:5px;
     background:linear-gradient(90deg,var(--accent),var(--line-green));
   }
@@ -85,7 +84,6 @@
     padding:0 22px; font-size:12px; font-weight:700; color:#fff; background:var(--navy);
     font-family:var(--num); letter-spacing:.04em}
   .statusbar .ic{display:flex; gap:5px; align-items:center; font-size:11px}
-  /* LINE chat header */
   .lhead{display:flex; align-items:center; gap:10px; padding:11px 14px; background:var(--navy); color:#fff}
   .lhead .back{font-size:20px; opacity:.85; line-height:1}
   .lhead .av{width:34px; height:34px; border-radius:50%; object-fit:cover; border:1.5px solid rgba(255,255,255,.5)}
@@ -108,7 +106,7 @@
   .row.in{justify-content:flex-start}
   .row.out{justify-content:flex-end}
   .av-s{width:30px; height:30px; border-radius:50%; object-fit:cover; flex:none; align-self:flex-start}
-  .av-sp{width:30px; flex:none}           /* avatar spacer when grouped */
+  .av-sp{width:30px; flex:none}
   .grp{max-width:78%; display:flex; flex-direction:column; gap:3px}
   .who{font-size:11px; color:#42526b; font-weight:700; margin:2px 0 1px 2px}
   .bub{
@@ -119,18 +117,10 @@
   .out .bub{background:var(--line-green); color:#fff; border-radius:16px 4px 16px 16px}
   .out .grp{align-items:flex-end}
   .bub b{font-weight:800}
+  .bub a{color:#0a5ad6; text-decoration:underline; word-break:break-all}
   .time{font-size:10px; color:#5b6b80; align-self:flex-end; margin-bottom:2px; flex:none; font-weight:600}
   .out .time{order:-1}
 
-  /* quick reply pills (LINEのタップ回答) */
-  .qr{display:flex; flex-wrap:wrap; gap:6px; margin:7px 0 4px 37px}
-  .qr .pill{
-    background:#fff; color:var(--line-green); border:1.5px solid var(--line-green);
-    font-size:12px; font-weight:700; padding:6px 12px; border-radius:999px; line-height:1.3;
-  }
-  .qr.single .pill{background:var(--line-green); color:#fff}
-
-  /* rich menu pinned bottom */
   .richwrap{background:#fff; border-top:1px solid var(--line)}
   .richbar{display:flex; align-items:center; justify-content:center; gap:7px; padding:7px;
     font-size:11px; font-weight:700; color:var(--mute); background:#f4f6f9}
@@ -172,7 +162,9 @@
 <header class="hero">
   <div class="wrap">
     <div class="eyebrow">Akiyama Hiroaki — Official LINE</div>
-    <span class="note">※ 文面は現在ドラフトです（本番公開前に最終調整します）</span>
+    <h1>登録者が受け取るメッセージの全体像</h1>
+    <p class="lead">友だち追加した経営者が、あいさつ・登録特典から6日目のリマインドまでに受け取る文面を、実際のLINE画面で時系列に再現しています。</p>
+    <span class="note">※ 文面は現在ドラフトです（秋山さん確認前提・本番公開前に最終調整します）</span>
   </div>
 </header>
 
@@ -182,9 +174,9 @@
     <h2 class="sec-title rv">登録者がたどる5ステップ</h2>
     <div class="flow">
       <div class="step rv"><div class="top"><span class="n">1</span></div><h4>友だち追加</h4><p>QRやリンクから登録。すぐにあいさつが届く。</p></div>
-      <div class="step rv"><div class="top"><span class="n">2</span></div><h4>その場で無料診断</h4><p>ボタンをタップするだけの全11問。タイピング不要・約30秒。</p></div>
-      <div class="step rv"><div class="top"><span class="n">3</span></div><h4>診断結果が出る</h4><p>「AIが一番利益を生む場所」と年間インパクトを提示。</p></div>
-      <div class="step rv"><div class="top"><span class="n">4</span></div><h4>6日間のステップ配信</h4><p>営業→事例→誤解→相談案内→リマインドを自動でお届け。</p></div>
+      <div class="step rv"><div class="top"><span class="n">2</span></div><h4>登録特典が届く</h4><p>あいさつ直後に『AI×COO 実装キット10』。自社でそのまま使えるテンプレ集。</p></div>
+      <div class="step rv"><div class="top"><span class="n">3</span></div><h4>6日間のステップ配信</h4><p>営業→事例→誤解→相談案内→リマインドを自動でお届け。</p></div>
+      <div class="step rv"><div class="top"><span class="n">4</span></div><h4>（任意）AI経営診断</h4><p>メニューからタップで約30秒。御社のタイプを判定し、案内を最適化。</p></div>
       <div class="step rv"><div class="top"><span class="n">5</span></div><h4>無料相談へ</h4><p>ピンと来たら相談。秋山さんが日程を調整。</p></div>
     </div>
   </div>
@@ -204,21 +196,31 @@
       </div>
       <div class="chat" id="chat"><!-- JSで描画 --></div>
       <div class="richwrap">
-        <div class="richbar">▼ トーク画面の下に常に表示されるメニュー</div>
-        <img src="assets/richmenu.png" alt="リッチメニュー（AI経営診断／無料相談／実績／X）">
+        <div class="richbar">▼ トーク画面の下に常に表示されるメニュー（特典／AI診断／無料相談／実績）</div>
+        <img src="assets/richmenu.png" alt="リッチメニュー（特典を受け取る／AI経営診断／無料相談／実績を見る）">
       </div>
       <div class="inputbar"><div class="box"></div><div class="snd">➤</div></div>
     </div>
   </div>
-  <p class="cap">↑ あいさつから6日後のリマインドまで、登録者が受け取る全メッセージを時系列で再現しています。</p>
+  <p class="cap">↑ あいさつ・特典配布から6日後のリマインドまで、登録者が受け取る全メッセージを時系列で再現しています。</p>
 </section>
 
 <section class="branches">
   <div class="wrap">
     <div class="sec-label rv">Other Responses</div>
     <h2 class="sec-title rv">そのほかの自動応答</h2>
-    <p class="sec-sub rv">登録者が自由にメッセージを送ったときや、別の入口から入ったときの動きです。</p>
+    <p class="sec-sub rv">登録者が自由にメッセージを送ったときや、メニューをタップしたときの動きです。</p>
     <div class="bgrid">
+      <div class="bcard rv">
+        <div class="hd"><span class="tag">Keyword</span><h4>「特典」と送ると</h4></div>
+        <div class="bd">
+          <div class="trig">トリガー：特典／キット／受け取る</div>
+          <div class="msg">登録特典『経営者のためのAI×COO 実装キット10』はこちらです。
+（Googleスプレッドのリンク）
+
+『ファイルをコピー』して、気になるタブから使ってみてください。</div>
+        </div>
+      </div>
       <div class="bcard rv">
         <div class="hd"><span class="tag">Keyword</span><h4>「相談」と送ると</h4></div>
         <div class="bd">
@@ -230,16 +232,6 @@
         </div>
       </div>
       <div class="bcard rv">
-        <div class="hd"><span class="tag">Keyword</span><h4>「ROI」「特典」と送ると</h4></div>
-        <div class="bd">
-          <div class="trig">トリガー：ROI／試算／シート／特典</div>
-          <div class="msg">AI導入ROI試算シートはこちらです。
-（gin1110m.github.io …/roi.html）
-
-自社の数字を入れてみてください。</div>
-        </div>
-      </div>
-      <div class="bcard rv">
         <div class="hd"><span class="tag">AI Reply</span><h4>それ以外の質問は</h4></div>
         <div class="bd">
           <div class="trig">トリガー：上記以外のメッセージ</div>
@@ -248,11 +240,11 @@
         </div>
       </div>
       <div class="bcard rv">
-        <div class="hd"><span class="tag">Web</span><h4>X・検索から来た人は</h4></div>
+        <div class="hd"><span class="tag">Menu</span><h4>（任意）AI経営診断</h4></div>
         <div class="bd">
-          <div class="trig">入口：Web版 AI経営診断（shindan.html）</div>
-          <div class="msg">LINE未登録でも、Webページ上で同じ診断ができます。
-結果を見た流れで、そのまま公式LINEの友だち追加へ。</div>
+          <div class="trig">入口：メニューの「AI経営診断」</div>
+          <div class="msg">ボタンをタップするだけの全11問・約30秒。
+御社のタイプ（HOT/WARM/COLD）を判定し、その後の案内をその人に合わせて最適化します（裏側の振り分け）。</div>
         </div>
       </div>
     </div>
@@ -267,63 +259,36 @@
 </footer>
 
 <script>
-/* == 実際のbot(steps.py / quizflow.py / diagnosis.py)から抽出したメッセージ == */
-const G = "登録ありがとうございます。秋山洋晃の公式LINEです。\n\n「AIで経営の数字がどう変わるか」を確認していきましょう。";
-
-const QUESTIONS = [
-  ["御社にいちばん近い事業はどれですか？", ["D2C（自社ブランド/定期通販）","EC・通販（モール/自社EC）","美容・クリニック（自由診療）","教育・スクール","SaaS・IT","人材・エージェント","その他"]],
-  ["直近の年商は、ざっくりどのあたりですか？", ["〜3億","3〜10億","10〜50億","50億〜"]],
-  ["社員数はどのくらいですか？", ["〜10名","10〜50名","50〜150名","150名〜"]],
-  ["あなたのお立場は？", ["経営者・役員","事業責任者","部門長","担当者"]],
-  ["営業チームは、提案資料・議事録・リスト作成などに追われず、商談そのものに時間を使えていますか？", ["商談は業務の半分以下","付随作業で残業が常態化","商談時間は確保できている","営業部門はない"]],
-  ["集客は、当てる施策とクリエイティブを、十分な量とスピードで回せていますか？", ["制作が全く追いつかない","検証の量と速度が足りない","獲得効率は安定している","マーケ機能はない"]],
-  ["問い合わせ対応は、件数が増えても今の人数で回りますか？", ["同じ質問対応に追われる","繁忙期は遅れてクレーム","今の体制でさばけている","CS部門はない"]],
-  ["採用は、母集団形成から選考・日程調整までスムーズに回せていますか？", ["手作業で単価だけ上がる","送信・日程調整に時間","今のやり方で採れている","いま採用はしていない"]],
-  ["月次の集計・レポート・議事録は、どれくらい自動化できていますか？", ["毎月まとまった工数が消える","半分手作業でミスが出る","ほぼ自動化できている","専任の担当はいない"]],
-  ["商談の前後に資料・連絡などの作業が発生する人は、何人いますか？", ["1〜3人（少数精鋭）","4〜10人（チーム化してきた）","11〜30人（管理が増える）","30人〜（営業組織がある）"]],
-  ["その一人あたりの平均年収は、ざっくりどのくらいですか？", ["〜400万円","400〜600万円","600〜800万円","800万円〜"]],
-];
-
-/* 診断結果（例：上の回答の場合。実ロジックで算出した代表値） */
-const RESULT = "診断結果です。\n\n御社でAIが一番利益を生むのは「営業」。\n年間 約1,176万円のポテンシャルです（概算）。\n\n▼ 5機能の利益インパクト（概算）\n・営業：約1,176万円\n・バックオフィス：約525万円\n・CS：約281万円\n・マーケ：約150万円\n・採用：約10万円\n\n※公開情報・一般値ベースの概算です。御社の実数での精密試算は無料相談で。";
-const BOOK = "ありがとうございます。秋山が日程を調整します。\nこのままLINEで希望の曜日・時間帯を送っていただくか、こちらからどうぞ。";
+/* == 実際のbot(steps.py)から抽出したメッセージ（2026-06-04 magnet PIVOT版） == */
+const G = "登録ありがとうございます。秋山洋晃の公式LINEです。\n\n「AIで経営の数字がどう変わるか」を一緒に確認していきましょう。";
+const MAGNET = "さっそく、登録特典をお渡しします。\n\n『経営者のためのAI×COO 実装キット10』\n前職で月商1,000万を12ヶ月で1億にしたときの打ち手を、自社でそのまま使える10本のテンプレートとプロンプトにまとめました。\n\n▼ こちらから（『ファイルをコピー』して使えます）\nhttps://drive.google.com/file/d/1vdBHVPiVHxWnVeftnCKc0JdRtPqFAvnj/view\n\n気になるタブから開いてみてください。";
 
 const DAYS = [
-  ["登録から1日後","AIで一番お金が動くのは、実は「営業」でした。\n\n前職では、月商1,000万の会社を12ヶ月で月商1億にしました。\n本質は、営業マンを“商談だけ”に集中させたこと。\n\n議事録・提案資料・メール・リスト作成。\nこの「商談以外」をAIに寄せると、生産性は数倍になります。"],
-  ["登録から2日後","具体的な数字をひとつ。\n\nある美容クリニックは、CPAが15万円→5万円(300%改善)。\n数百万の赤字が、3ヶ月で黒字になりました。\n\n派手なAIツールを入れたからではありません。\n「どの数字を、どの順で動かすか」を決めただけ。AIはその実行を速くする手段です。"],
-  ["登録から3日後","AIでよくある失敗は、「ツールを覚えること」が目的になることです。\n\nプロンプトを勉強しても、それだけでは売上は増えません。\n大事なのは“経営のどのボトルネックに当てるか”。\n\n順番が逆だと、時間だけ溶けていきます。"],
-  ["登録から4日後","もし自社で試したいなら、無料相談(30分)をやっています。\n\n・あなたの事業で、AIが一番効く一手はどこか\n・それで数字がどう動くか(ざっくり試算)\n一緒に見ていきましょう。\n\n▼ 予約はこちら"],
-  ["登録から6日後","先日ご案内した無料相談、枠が埋まってきています。\n\n「AIで何ができるか」ではなく「自社の利益がどう変わるか」を一緒に見ます。\nピンと来たタイミングで大丈夫です。\n\n▼ 予約はこちら"],
+  ["登録から1日後","特典は開いてみましたか。\n\nAIで一番お金が動くのは、多くの会社で「営業」です。\n前職では、営業を“商談だけ”に集中させ、議事録・提案資料・メール・リスト作成といった商談以外の作業をAIに寄せました。\n\nまず一つの工程で試すと、変化が見えやすいです。"],
+  ["登録から2日後","具体的な例をひとつ。\n\nある美容クリニックは、赤字が3ヶ月で黒字に変わりました。\n広告のCPAは、およそ10分の1まで下がっています。\n\n派手なAIツールを入れたからではありません。\n「どの数字を、どの順番で動かすか」を決めて、その実行をAIで速くしただけです。"],
+  ["登録から3日後","AIでよくある失敗は、「ツールを覚えること」が目的になることです。\n\nプロンプトを集めても、それだけでは売上は増えません。\n特典の型も、どの会社でも効く“汎用の入口”です。\n\n効果を左右するのはその先で、御社の数字・体制・商品によって、どこに当てるかが変わります。"],
+  ["登録から4日後","自社に当てはめてみたいなら、無料相談(30分)をやっています。\n\n・御社で、AIが一番効く一手はどこか\n・それで数字がどう動くか(ざっくり試算)\n特典を見て出てきた疑問を、そのまま持ってきてください。\n\n▼ 予約はこちら"],
+  ["登録から6日後","先日ご案内した無料相談、もし迷っているようでしたら一度どうぞ。\n\n「AIで何ができるか」ではなく「自社の利益がどう変わるか」を一緒に見ます。\nピンと来たタイミングで大丈夫です。\n\n▼ 予約はこちら"],
 ];
 
 const AV = "assets/akiyama.jpg";
 const chat = [];
 chat.push({t:"divider", x:"友だち追加した直後"});
 chat.push({t:"in", head:true, x:G, time:"9:24"});
-QUESTIONS.forEach((q,i)=> chat.push({t:"in", x:q[0], qr:q[1], time:"9:24"}));
-chat.push({t:"note", x:"↑ ボタンをタップするだけの全11問。タイピング不要で約30秒。回答すると次の質問が出ます。"});
-chat.push({t:"in", head:true, x:RESULT, qr:["無料相談について"], single:true, time:"9:25"});
-chat.push({t:"out", x:"無料相談について", time:"9:25"});
-chat.push({t:"in", head:true, x:BOOK, time:"9:25"});
+chat.push({t:"in", x:MAGNET, time:"9:24"});
+chat.push({t:"note", x:"↑ あいさつと一緒に、登録特典『AI×COO 実装キット10』がその場で届きます。"});
 DAYS.forEach(d=>{ chat.push({t:"divider", x:d[0]}); chat.push({t:"in", head:true, x:d[1], time:"10:00"}); });
 
 const esc = s => s.replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;");
+const fmt = s => esc(s).replace(/(https?:\/\/[^\s]+)/g, '<a href="$1" target="_blank" rel="noopener">$1</a>');
 const el = document.getElementById("chat");
 let html = "";
 for(const m of chat){
   if(m.t==="divider"){ html += `<div class="divider"><span>${esc(m.x)}</span></div>`; continue; }
   if(m.t==="note"){ html += `<div class="note-line">${esc(m.x)}</div>`; continue; }
-  if(m.t==="in"){
-    const av = m.head ? `<img class="av-s" src="${AV}" alt="秋山洋晃">` : `<div class="av-sp"></div>`;
-    const who = m.head ? `<div class="who">秋山洋晃</div>` : "";
-    html += `<div class="row in">${av}<div class="grp">${who}<div style="display:flex;align-items:flex-end;gap:7px"><div class="bub">${esc(m.x)}</div><span class="time">${m.time||""}</span></div></div></div>`;
-    if(m.qr){
-      const cls = m.single ? "qr single" : "qr";
-      html += `<div class="${cls}">` + m.qr.map(o=>`<span class="pill">${esc(o)}</span>`).join("") + `</div>`;
-    }
-  } else { // out
-    html += `<div class="row out"><div class="grp"><div style="display:flex;align-items:flex-end;gap:7px"><span class="time">${m.time||""}</span><div class="bub">${esc(m.x)}</div></div></div></div>`;
-  }
+  const av = m.head ? `<img class="av-s" src="${AV}" alt="秋山洋晃">` : `<div class="av-sp"></div>`;
+  const who = m.head ? `<div class="who">秋山洋晃</div>` : "";
+  html += `<div class="row in">${av}<div class="grp">${who}<div style="display:flex;align-items:flex-end;gap:7px"><div class="bub">${fmt(m.x)}</div><span class="time">${m.time||""}</span></div></div></div>`;
 }
 el.innerHTML = html;
 
@@ -338,7 +303,7 @@ document.querySelectorAll(".rv").forEach((n,i)=>{ n.style.transitionDelay = (Mat
   import { loadDefaultJapaneseParser } from 'https://cdn.jsdelivr.net/npm/budoux@0.8.4/+esm';
   const parser = loadDefaultJapaneseParser();
   const ZWSP = '​';
-  const SKIP = new Set(['SCRIPT','STYLE','TEXTAREA','CODE','PRE','NOSCRIPT','OPTION','INPUT']);
+  const SKIP = new Set(['SCRIPT','STYLE','TEXTAREA','CODE','PRE','NOSCRIPT','OPTION','INPUT','A']);
   const hasJa = s => /[぀-ヿ㐀-鿿ｦ-ﾟ]/.test(s);
   const apply = () => {
     const w = document.createTreeWalker(document.body, NodeFilter.SHOW_TEXT, {
