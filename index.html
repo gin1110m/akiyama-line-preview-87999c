@@ -174,7 +174,7 @@
     <h2 class="sec-title rv">登録者がたどる5ステップ</h2>
     <div class="flow">
       <div class="step rv"><div class="top"><span class="n">1</span></div><h4>友だち追加</h4><p>QRやリンクから登録。すぐにあいさつが届く。</p></div>
-      <div class="step rv"><div class="top"><span class="n">2</span></div><h4>登録特典が届く</h4><p>あいさつ直後に『AI×COO 実装キット10』。自社でそのまま使えるテンプレ集。</p></div>
+      <div class="step rv"><div class="top"><span class="n">2</span></div><h4>登録特典が届く</h4><p>あいさつ直後に『経営者の業務改善プロンプト10選』。コピペでそのまま使えるプロンプト集。</p></div>
       <div class="step rv"><div class="top"><span class="n">3</span></div><h4>6日間のステップ配信</h4><p>営業→事例→誤解→相談案内→リマインドを自動でお届け。</p></div>
       <div class="step rv"><div class="top"><span class="n">4</span></div><h4>（任意）AI経営診断</h4><p>メニューからタップで約30秒。御社のタイプを判定し、案内を最適化。</p></div>
       <div class="step rv"><div class="top"><span class="n">5</span></div><h4>無料相談へ</h4><p>ピンと来たら相談。秋山さんが日程を調整。</p></div>
@@ -214,11 +214,11 @@
       <div class="bcard rv">
         <div class="hd"><span class="tag">Keyword</span><h4>「特典」と送ると</h4></div>
         <div class="bd">
-          <div class="trig">トリガー：特典／キット／受け取る</div>
-          <div class="msg">登録特典『経営者のためのAI×COO 実装キット10』はこちらです。
+          <div class="trig">トリガー：特典／キット／プロンプト10選／受け取る</div>
+          <div class="msg">登録特典『経営者の業務改善プロンプト10選』はこちらです。
 （Googleスプレッドのリンク）
 
-『ファイルをコピー』して、気になるタブから使ってみてください。</div>
+『ファイル→コピーを作成』で複製して、気になるタブから使ってみてください。</div>
         </div>
       </div>
       <div class="bcard rv">
@@ -259,9 +259,9 @@
 </footer>
 
 <script>
-/* == 実際のbot(steps.py)から抽出したメッセージ（2026-06-04 magnet PIVOT版） == */
+/* == 実際のbot(steps.py)から抽出したメッセージ（2026-06-07 業務改善プロンプト10選版） == */
 const G = "登録ありがとうございます。秋山洋晃の公式LINEです。\n\n「AIで経営の数字がどう変わるか」を一緒に確認していきましょう。";
-const MAGNET = "さっそく、登録特典をお渡しします。\n\n『経営者のためのAI×COO 実装キット10』\n前職で月商1,000万を12ヶ月で1億にしたときの打ち手を、自社でそのまま使える10本のテンプレートとプロンプトにまとめました。\n\n▼ こちらから（『ファイルをコピー』して使えます）\nhttps://drive.google.com/file/d/1vdBHVPiVHxWnVeftnCKc0JdRtPqFAvnj/view\n\n気になるタブから開いてみてください。";
+const MAGNET = "さっそく、登録特典をお渡しします。\n\n『経営者の業務改善プロンプト10選』\n営業リスト生成・提案資料・契約書レビュー・請求書仕訳・議事録など、私が実際に使用しているものと同様の業務改善プロンプトを、コピペでそのまま使える形にまとめました。\n\n▼ こちらから（『ファイル→コピーを作成』で自分用に複製して使えます）\nhttps://drive.google.com/file/d/1vdBHVPiVHxWnVeftnCKc0JdRtPqFAvnj/view\n\nいま一番手間がかかっている業務のタブから開いてみてください。";
 
 const DAYS = [
   ["登録から1日後","AIで一番お金が動くのは、多くの会社で「営業」です。\n前職では、営業を“商談だけ”に集中させ、議事録・提案資料・メール・リスト作成といった商談以外の作業をAIに寄せました。\n\nまず一つの工程で試すと、変化が見えやすいです。"],
@@ -276,7 +276,7 @@ const chat = [];
 chat.push({t:"divider", x:"友だち追加した直後"});
 chat.push({t:"in", head:true, x:G, time:"9:24"});
 chat.push({t:"in", x:MAGNET, time:"9:24"});
-chat.push({t:"note", x:"↑ あいさつと一緒に、登録特典『AI×COO 実装キット10』がその場で届きます。"});
+chat.push({t:"note", x:"↑ あいさつと一緒に、登録特典『経営者の業務改善プロンプト10選』がその場で届きます。"});
 DAYS.forEach(d=>{ chat.push({t:"divider", x:d[0]}); chat.push({t:"in", head:true, x:d[1], time:"10:00"}); });
 
 const esc = s => s.replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;");
